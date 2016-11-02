@@ -4,7 +4,6 @@ import "errors"
 
 type Tree struct {
 	root *Node
-	size int
 }
 
 type Node struct {
@@ -20,22 +19,22 @@ var (
 func NewTree() *Tree {
 	return &Tree{
 		root: nil,
-		size: 0,
 	}
 }
 
-func (t *Tree) Root(val interface{}) (*Tree, error) {
+func (t *Tree) Root() *Node {return t.root}
+
+func (t *Tree) AddRoot(val interface{}) (*Node, error) {
 	if t.root != nil {
 		return nil, ErrAlreadyHasRoot
 	}
 
-	t.root = NewNode(val)
-	t.size++
+	t.root = newNode(val)
 
-	return t, nil
+	return t.root, nil
 }
 
-func NewNode(val interface{}) *Node {
+func newNode(val interface{}) *Node {
 	return &Node{
 		value: val,
 		left:  nil,
@@ -43,14 +42,28 @@ func NewNode(val interface{}) *Node {
 	}
 }
 
-func (n *Node) Left(val interface{}) *Node {
-	n.left = NewNode(val)
+
+func (n *Node) Value() interface{} {return n.value}
+func (n *Node) Left() *Node {return n.left}
+func (n *Node) Right() *Node {return n.right}
+
+func (n *Node) AddLeft(val interface{}) *Node {
+	return n.addLeft(val)
+}
+
+func (n *Node) AddRight(val interface{}) *Node {
+	return n.addRight(val)
+}
+
+
+func (n *Node) addLeft(val interface{}) *Node {
+	n.left = newNode(val)
 
 	return n.left
 }
 
-func (n *Node) Right(val interface{}) *Node {
-	n.right = NewNode(val)
+func (n *Node) addRight(val interface{}) *Node {
+	n.right = newNode(val)
 
 	return n.right
 }
