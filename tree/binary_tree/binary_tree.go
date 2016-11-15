@@ -22,14 +22,23 @@ func NewTree() *Tree {
 	}
 }
 
-func (t *Tree) Root() *Node {return t.root}
+// Root specifies the root of tree
+func (t *Tree) Root() *Node { return t.root }
 
+// AddRoot sets the the if any value is not set
 func (t *Tree) AddRoot(val interface{}) (*Node, error) {
 	if t.root != nil {
 		return nil, ErrAlreadyHasRoot
 	}
 
 	t.root = newNode(val)
+
+	return t.root, nil
+}
+
+// SetRoot sets the root, if any value is set for root, it overrides the previous value
+func (t *Tree) SetRoot(val interface{}) (*Node, error) {
+	t.root.value = val
 
 	return t.root, nil
 }
@@ -42,10 +51,14 @@ func newNode(val interface{}) *Node {
 	}
 }
 
+// Value exports the unexported node value
+func (n *Node) Value() interface{} { return n.value }
 
-func (n *Node) Value() interface{} {return n.value}
-func (n *Node) Left() *Node {return n.left}
-func (n *Node) Right() *Node {return n.right}
+// Left exports the unexported left node
+func (n *Node) Left() *Node { return n.left }
+
+// Right exports the unexported right node
+func (n *Node) Right() *Node { return n.right }
 
 func (n *Node) AddLeft(val interface{}) *Node {
 	return n.addLeft(val)
@@ -54,7 +67,6 @@ func (n *Node) AddLeft(val interface{}) *Node {
 func (n *Node) AddRight(val interface{}) *Node {
 	return n.addRight(val)
 }
-
 
 func (n *Node) addLeft(val interface{}) *Node {
 	n.left = newNode(val)
