@@ -17,6 +17,7 @@ var (
 	ErrAlreadyHasRoot = errors.New("Tree already has a root")
 )
 
+// NewTree inits the Tree
 func NewTree() *Tree {
 	return &Tree{
 		root: nil,
@@ -63,7 +64,7 @@ func (n *Node) Left() *Node { return n.left }
 // Right exports the unexported right node
 func (n *Node) Right() *Node { return n.right }
 
-// Right exports the unexported right node
+// Parent exports the unexported parent value
 func (n *Node) Parent() *Node { return n.parent }
 
 // Root fetches the root node of the tree
@@ -75,10 +76,12 @@ func (n *Node) Root() *Node {
 	return n
 }
 
+// AddLeft add a child to the left side of node
 func (n *Node) AddLeft(val interface{}) *Node {
 	return n.addLeft(val)
 }
 
+// AddRight add a child to the right side of node
 func (n *Node) AddRight(val interface{}) *Node {
 	return n.addRight(val)
 }
@@ -86,6 +89,11 @@ func (n *Node) AddRight(val interface{}) *Node {
 // IsLeaf checks the node if its leaf of tree
 func (n *Node) IsLeaf() bool {
 	return n.value != nil && n.Left() == nil && n.Right() == nil
+}
+
+// IsRoot checks the node if its root
+func (n *Node) IsRoot() bool {
+	return n == n.Parent()
 }
 
 func (n *Node) addLeft(val interface{}) *Node {
@@ -101,6 +109,7 @@ func (n *Node) addRight(val interface{}) *Node {
 
 	return n.right
 }
+
 func (n *Node) setParent(node *Node) {
 	n.parent = node
 }
