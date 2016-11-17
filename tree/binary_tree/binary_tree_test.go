@@ -27,6 +27,7 @@ func TestBinaryTreeRoot(t *testing.T) {
 		t.Fatal("right children should be nil")
 	}
 }
+
 func TestBinaryTreeRootSet(t *testing.T) {
 	tree := NewTree()
 	_, err := tree.AddRoot("root")
@@ -37,6 +38,23 @@ func TestBinaryTreeRootSet(t *testing.T) {
 	setRoot := tree.SetRoot("set-root")
 	if tree.Root() != setRoot {
 		t.Fatal("tree root should equal set-root")
+	}
+}
+
+func TestBinaryTreeIsRoot(t *testing.T) {
+	tree := NewTree()
+	root, err := tree.AddRoot("root")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if root.IsRoot() != true {
+		t.Fatal("isRoot should be true for root value")
+	}
+
+	left := root.AddLeft("left")
+	if left.IsRoot() != false {
+		t.Fatal("isRoot should be true for left value")
 	}
 }
 
