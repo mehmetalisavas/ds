@@ -2,10 +2,13 @@ package tree
 
 import "errors"
 
+// Tree specifies only root.
+// then ready to go for node after defining tree
 type Tree struct {
 	root *Node
 }
 
+// Node specifies the preferences of each node
 type Node struct {
 	parent *Node
 	left   *Node
@@ -13,6 +16,7 @@ type Node struct {
 	value  interface{}
 }
 
+// binary tree errors
 var (
 	ErrAlreadyHasRoot = errors.New("Tree already has a root")
 )
