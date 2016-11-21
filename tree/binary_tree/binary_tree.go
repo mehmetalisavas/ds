@@ -9,6 +9,22 @@ type Tree struct {
 }
 
 // Node specifies the preferences of each node
+//
+// root -|-right-node1 - |-right-node2
+// 		 |				 |
+// 		 |				 |left-node2
+// 		 |
+// 		 |
+// 		 |-left-node1
+//
+//
+//
+// After initializing root node
+// set left node with; root.AddLeft("left-node1")
+// set right node with; root.AddRight("right-node1")
+//
+// IsLeaf("left-node1") returns true, if node doesn't have anychild
+// left-node1.Parent() returns right-node1 according to this schema
 type Node struct {
 	parent *Node
 	left   *Node
