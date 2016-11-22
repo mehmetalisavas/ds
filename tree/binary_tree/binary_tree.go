@@ -88,6 +88,8 @@ func (n *Node) Right() *Node { return n.right }
 func (n *Node) Parent() *Node { return n.parent }
 
 // Root fetches the root node of the tree
+// Root() func is reachable for all child node
+// get easily root of tree with Root() call by all child
 func (n *Node) Root() *Node {
 	for n.parent != n {
 		n = n.Parent()
@@ -111,7 +113,7 @@ func (n *Node) IsLeaf() bool {
 	return n.value != nil && n.Left() == nil && n.Right() == nil
 }
 
-// IsRoot checks the node if its root
+// IsRoot checks the node if its root or not
 func (n *Node) IsRoot() bool {
 	return n == n.Parent()
 }
