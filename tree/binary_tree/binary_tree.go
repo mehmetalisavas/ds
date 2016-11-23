@@ -4,6 +4,9 @@ import "errors"
 
 // Tree specifies only root.
 // then ready to go for node after defining tree
+//
+// To init Tree struct you can call directly AddRoot() function instead of NewTree.
+// It also inits Tree struct
 type Tree struct {
 	root *Node
 }
