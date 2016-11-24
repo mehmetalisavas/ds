@@ -27,6 +27,20 @@ func TestBinaryTreeRoot(t *testing.T) {
 		t.Fatal("right children should be nil")
 	}
 }
+func TestBinaryTreeAddRoot(t *testing.T) {
+	tree := NewTree()
+	root, err := tree.AddRoot("root")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if root.Value() == "" {
+		t.Fatal("root should not be empty")
+	}
+	if root.Value() != "root" {
+		t.Fatal("root value should equal 'root'")
+	}
+}
 
 func TestBinaryTreeRootSet(t *testing.T) {
 	tree := NewTree()
