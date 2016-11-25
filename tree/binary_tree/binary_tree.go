@@ -135,3 +135,10 @@ func (n *Node) addRight(val interface{}) *Node {
 func (n *Node) setParent(node *Node) {
 	n.parent = node
 }
+
+func (n *Node) RemoveIfLeaf() {
+	if n.IsLeaf() {
+		n.parent.left = nil
+		n = nil
+	}
+}
