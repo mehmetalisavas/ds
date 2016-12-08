@@ -9,8 +9,25 @@ func Search(root *Node, value int) *Node {
 	}
 
 	if value > root.Value().(int) {
-		Search(root.Right(), value)
+		return Search(root.Right(), value)
 	}
 
 	return Search(root.Left(), value)
+}
+
+// Insert insert the value into the BST
+// TODO ~mehmetali
+// add tests
+func Insert(node *Node, value int) *Node {
+	if node == nil {
+		return newNode(value)
+	}
+
+	if value > node.Value().(int) {
+		Insert(node.Right(), value)
+	} else {
+		Insert(node.Left(), value)
+	}
+
+	return node
 }
