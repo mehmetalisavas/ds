@@ -1,9 +1,6 @@
 package tree
 
-import (
-	"fmt"
-	"testing"
-)
+import "testing"
 
 func TestNewBinaryTree(t *testing.T) {
 	tree := NewTree()
@@ -244,7 +241,6 @@ func TestBinaryTreeRemoveIfLeaf(t *testing.T) {
 
 	left := root.AddLeft("root-left")
 	left2 := left.AddLeft("root-left2")
-	// right := root.AddRight("root-right")
 
 	if root.IsLeaf() == true {
 		t.Fatal("isLeaf should equal false")
@@ -256,11 +252,9 @@ func TestBinaryTreeRemoveIfLeaf(t *testing.T) {
 	if root.Left().Left() != left2 {
 		t.Fatal("should equal 'left2'")
 	}
-	fmt.Println("root.left.left", root.Left().Left())
+
 	left2.RemoveIfLeaf()
-	fmt.Println("root.left.left", root.Left().Left())
 	if root.Left().Left() != nil {
 		t.Fatal("should equal nil")
 	}
-
 }
