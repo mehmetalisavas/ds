@@ -1,7 +1,5 @@
 package tree
 
-import "fmt"
-
 // Search searches the given integer value inside the binary tree
 // If given value is greater than root's value, then search right nodes of tree
 // otherwise search in the left nodes of the root node
@@ -21,7 +19,6 @@ func Search(root *Node, value int) *Node {
 // TODO ~mehmetali
 // add tests
 func Insert(node *Node, value int) *Node {
-	fmt.Println("node- :", node)
 	if node == nil {
 		node = newNode(value)
 		node.setParent(node)
