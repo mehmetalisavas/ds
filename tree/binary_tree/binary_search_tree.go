@@ -15,9 +15,7 @@ func Search(root *Node, value int) *Node {
 	return Search(root.Left(), value)
 }
 
-// Insert insert the value into the BST
-// TODO ~mehmetali
-// add tests
+// Insert insert the value into the BST and returns last added node
 func Insert(node *Node, value int) *Node {
 	if node == nil {
 		node = newNode(value)
@@ -29,9 +27,9 @@ func Insert(node *Node, value int) *Node {
 		node.right = Insert(node.Right(), value)
 		node.right.setParent(node)
 		return node.right
-	} else {
-		node.left = Insert(node.Left(), value)
-		node.left.setParent(node)
-		return node.left
 	}
+
+	node.left = Insert(node.Left(), value)
+	node.left.setParent(node)
+	return node.left
 }
