@@ -136,6 +136,8 @@ func (n *Node) setParent(node *Node) {
 	n.parent = node
 }
 
+// RemoveIfLeaf checks the node if leaf or not.
+// If node is leaf then removes the node from tree
 func (n *Node) RemoveIfLeaf() {
 	if n.IsLeaf() {
 		n.parent.left = nil
