@@ -1,10 +1,12 @@
+//
 // stack package implements the stack with array
+//
 package stack
 
 import "sync"
 
 //
-// stacks uses orded LIFO(Last In First Out) or FILO(First In Last Out).
+// Stack uses orded LIFO(Last In First Out) or FILO(First In Last Out).
 //
 type Stack struct {
 	// v holds the stack values as an interface array
