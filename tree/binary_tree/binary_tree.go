@@ -132,6 +132,7 @@ func (n *Node) addRight(val interface{}) *Node {
 	return n.right
 }
 
+// setParent sets the node as a parent
 func (n *Node) setParent(node *Node) {
 	n.parent = node
 }
